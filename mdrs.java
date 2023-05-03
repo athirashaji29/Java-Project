@@ -342,6 +342,57 @@ public static void AddNewMovie() throws SQLException{
     }
 }
 
+public static void DeleteMovie(){
+        try{
+            System.out.println("\n\n\n\n");
+            System.out.println("\t\t\t\tEnter Movie ID(0 to exit): ");
+            System.out.print("\t\t\t\t");
+            int num=sc.nextInt();
+            if(num==0){
+                return;
+            }
+            PreparedStatement pst=con.prepareStatement("select * from movie where columnid=?");
+            pst.setInt(1,num);
+            ResultSet rs=pst.executeQuery();
+            if(rs.next()){
+                System.out.println("  \t-------------------------------------------------------------------------------------------------");
+                System.out.println("  \t|ID\t|\tNAME\t|\tFORMAT\t| SHOW DATE\t| SHOW TIME\t| PRICE\t| AVL.SEAT(s)\t|");
+                System.out.println("  \t-------------------------------------------------------------------------------------------------");
+                System.out.println("  \t| "+rs.getInt(1)+"\t| "+rs.getString(2)+"\t| "+rs.getString(3)+"\t| "+rs.getDate(4)+"\t| "+rs.getTime(5)+"\t| "+rs.getDouble(6)+"\t|\t"+rs.getInt(7)+"\t|");
+                System.out.println("  \t-------------------------------------------------------------------------------------------------");
+            }
+            else{
+                System.out.println("\t\t\t\tInvalid Movie ID.....!!!");
+                System.out.println("\t\t\t\tPlease enter any key to continue.... ");
+                sc.next();
+                return;
+            }
+            System.out.println("\n\n\t\t\t\tPress \'d\' to delete");
+            System.out.print("\t\t\t\t");
+            char c=sc.next().charAt(0);
+            if(c=='d'||c=='D'){
+                pst=con.prepareStatement("delete from movie where columnid=?");
+                pst.setInt(1,num);
+                if(pst.executeUpdate()>0){
+                    System.out.println("\t\t\t\tMovie deleted.....");
+                }
+                else{
+                    System.out.println("\t\t\t\tMovie is NOT deleted.....!!!");
+                    System.out.println("\t\t\t\tPlease enter any key to continue.... ");
+                    sc.next();
+                }
+            }
+            else{
+                System.out.println("\t\t\t\tMovie is NOT deleted.....!!!");
+                System.out.println("\t\t\t\tPlease enter any key to continue.... ");
+                sc.next(); 
+                return;
+            }
+        }
+        catch(Exception e){
+            System.out.println("\t\t\t\tException occured.....\n\n");
+        }
+    }
 
     
     
