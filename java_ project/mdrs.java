@@ -602,19 +602,19 @@ public static void DeleteMovie(){
                             int ch2;
                             do{
                                 clearscreen();
-                                System.out.print("\n\n\n\n");
-                                System.out.println("\t\t\t\t------------------------------------------");
-                                System.out.println("\t\t\t\t\t-------OWNER PANAL------");
-                                System.out.println("\t\t\t\t------------------------------------------");
-                                System.out.println("\t\t\t\t1. Add New Movie");
-                                System.out.println("\t\t\t\t2. Delete Movie");
-                                System.out.println("\t\t\t\t3. Show Movie List");
-                                System.out.println("\t\t\t\t4. See Total Bookings");
-                                System.out.println("\t\t\t\t5. Back");
-                                System.out.println("\t\t\t\t0. Exit");
-                                System.out.println("\t\t\t\t------------------------------------------");
-                                System.out.println("\t\t\t\tEnter your Choice...:");
-                                System.out.print("\t\t\t\t");
+                                System.out.print("\033[H\033[2J"); // clear screen
+                                System.out.flush();
+                                System.out.println("\033[33m\t\t\t\t------------------------------------------\033[0m");
+                                System.out.println("\033[33m\t\t\t\t\t-------OWNER PANAL------\033[0m");
+                                System.out.println("\033[33m\t\t\t\t------------------------------------------\033[0m");
+                                System.out.println("\033[32m\t\t\t\t1. Add New Movie\033[0m");
+                                System.out.println("\033[31m\t\t\t\t2. Delete Movie\033[0m");
+                                System.out.println("\033[32m\t\t\t\t3. Show Movie List\033[0m");
+                                System.out.println("\033[32m\t\t\t\t4. See Total Bookings\033[0m");
+                                System.out.println("\033[34m\t\t\t\t5. Back\033[0m");
+                                System.out.println("\033[31m\t\t\t\t0. Exit\033[0m");
+                                System.out.println("\033[33m\t\t\t\t------------------------------------------\033[0m");
+                                System.out.print("\033[32m\t\t\t\tEnter your Choice...:\033[0m");
                                 ch2=sc.nextInt();
                                 switch(ch2){
                                     case 1:
