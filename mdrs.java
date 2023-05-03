@@ -593,6 +593,49 @@ clearscreen();
                                     System.out.println("\t\t\t\t\t--------------------------------------------\n\n\n"); 
                                     return;
                                 }
+                                 if(ch2==5){
+                                    ch=9;
+                                    break;
+                                }
+                            }while(ch2==9);
+                        }
+                        else{
+                            clearscreen();
+                            System.out.println("\n\n\n\n\n\t\t\t\t-----------------------------------------------------");
+                            System.out.println("\t\t\t\t YOU ARE NOT AUTHORISED TO ACCESS THIS PAGE....");
+                            System.out.println("\t\t\t\t-----------------------------------------------------");
+                            System.out.println("\n\n\t\t\t\tPress any key to go back.....");
+                            System.out.print("\t\t\t\t");
+                            sc.next();
+                            ch=9;
+                        }
+                        break;
+                    case 0:
+                        clearscreen();
+                        System.out.print("\n\n\n\n\n\n");
+                        System.out.println("\t\t\t\t\t--------------------------------------------");
+                        System.out.println("\t\t\t\t\t\tTHANK YOU FOR USING MTBS....!!!!");
+                        System.out.println("\t\t\t\t\t\tDEVELOPED BY:--");
+                        System.out.println("\t\t\t\t\t\tANAMIKA");
+                        System.out.println("\t\t\t\t\t--------------------------------------------\n\n\n"); 
+                        return;
+                    default:
+                        clearscreen();
+                        System.out.println("\n\n\n\n\t\t\t\t------------------------");
+                        System.out.println("\t\t\t\tEnter a VALID CHOICE....");
+                        System.out.println("\t\t\t\t------------------------");
+                        System.out.print("\t\t\t\tEnter any key....");
+                        sc.next();
+                        ch=9;
+                }
+            }
+         catch(Exception e){
+             if(!e.getMessage().equals(null)){
+                System.out.print("Exception Occured");
+            }
+         }
+        }
+
     
     
     
