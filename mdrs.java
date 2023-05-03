@@ -562,7 +562,37 @@ public static void DeleteMovie(){
                                 case 0:
                                    break;
                                 default:
-
+clearscreen();
+                                        System.out.println("\n\n\n\n\t\t\t\t------------------------");
+                                        System.out.println("\t\t\t\tEnter a VALID CHOICE....");
+                                        System.out.println("\t\t\t\t------------------------");
+                                        System.out.print("\t\t\t\tEnter any key....");
+                                        sc.next();
+                                        ch2=9;
+                                }
+                                if(ch2!=0 && ch2!=9 && ch2!=5){
+                                    System.out.println("\t\t\t\t--------------------");
+                                    System.out.println("\t\t\t\tPress any key Back to main menu");
+                                    System.out.println("\t\t\t\t0. Exit");
+                                    System.out.println("\t\t\t\t--------------------");
+                                    System.out.println("\t\t\t\tEnter your Choice...:");
+                                    System.out.print("\t\t\t\t");
+                                    char c2=sc.next().charAt(0);
+                                    if(c2!='0')
+                                        ch2=9;
+                                    else
+                                        ch2=0;
+                                }
+                                if(ch2==0){
+                                    clearscreen();
+                                    System.out.print("\n\n\n\n\n\n");
+                                    System.out.println("\t\t\t\t\t--------------------------------------------");
+                                    System.out.println("\t\t\t\t\t\tTHANK YOU FOR USING MTBS....!!!!");
+                                    System.out.println("\t\t\t\t\t\tDEVELOPED BY:--");
+                                    System.out.println("\t\t\t\t\t\tANAMIKA");
+                                    System.out.println("\t\t\t\t\t--------------------------------------------\n\n\n"); 
+                                    return;
+                                }
     
     
     
