@@ -442,6 +442,11 @@ public static void DeleteMovie(){
         }
         return num;
     }
+
+    public static void clearscreen() throws InterruptedException,IOException,SQLException{
+        new ProcessBuilder("cmd","/c","cls").inheritIO().start().waitFor();
+    }
+
     
     
     
