@@ -24,6 +24,24 @@ class MTBS{
         }
         
     }
+
+    public static boolean login() throws SQLException{
+        System.out.println("\n\n\n\n\t\t\t\t-----------------------------");
+        System.out.println("\t\t\t\tLOGIN TO MOVIE TICKET BOOKING");
+        System.out.println("\t\t\t\t-----------------------------\n\n");
+        java.io.Console console=System.console();
+        System.out.print("\t\t\t\t");
+        String username =console.readLine("Username: ");
+        System.out.print("\t\t\t\t");
+        String password =new String(console.readPassword("Password: "));
+        System.out.println("\n\n\n");
+        if(username.equals("anamika") && password.equals("password")){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
     
     
     
