@@ -394,6 +394,30 @@ public static void DeleteMovie(){
         }
     }
 
+    public static int ShowMovieList() throws SQLException{
+        int num=0;
+        try{
+            PreparedStatement pst=con.prepareStatement("select * from movie");
+            ResultSet rs=pst.executeQuery();
+            System.out.println("\n\n\n");
+            System.out.println("  \t\t\t\t\t\tDETAILS OF ALL MOVIE");
+            System.out.println("  \t---------------------------------------------------------------------------------------------------------");
+            System.out.println("  \t| SNO.\t|ID\t|\tNAME\t|\tFORMAT\t| SHOW DATE\t| SHOW TIME\t| PRICE\t| AVL.SEAT(s)\t|");
+            System.out.println("  \t---------------------------------------------------------------------------------------------------------");
+            int i=1;
+            while(rs.next()){
+                System.out.println("  \t| "+i+"\t| "+rs.getInt(1)+"\t| "+rs.getString(2)+"\t| "+rs.getString(3)+"\t| "+rs.getDate(4)+"\t| "+rs.getTime(5)+"\t| "+rs.getDouble(6)+"\t|\t"+rs.getInt(7)+"\t|");
+                System.out.println("  \t---------------------------------------------------------------------------------------------------------");
+                num++;
+                i++;
+            }
+        }
+        catch(Exception e){
+            System.out.println("\t\t\t\tException occured "+e.getMessage());
+        }
+        return num;
+    }
+
     
     
     
