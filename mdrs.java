@@ -202,6 +202,77 @@ public static void showMyTicket(int num) throws SQLException{
     }
 }
 
+public static void CancleTicket() throws SQLException{
+    try{
+        while(true){
+            System.out.print("\n\n\n\n");
+            System.out.print("\t\t\t\tEnter Unique Id(0 for exit): ");
+            int num=sc.nextInt();
+            if(num==0){
+                return;
+            }
+            int seat,Mid;
+            PreparedStatement pst=con.prepareStatement("select * from customer c join user u on c.user_id = u.user_id where c.Cid=?");
+            pst.setInt(1,num);
+            ResultSet rs=pst.executeQuery();
+            if(rs.next()){
+                seat=rs.getInt("seat");
+                Mid=rs.getInt("columnid");
+            }
+            else{
+                System.out.println("\t\t\t\t-------------------------------");
+                System.out.println("\t\t\t\tThe Unique Id doesn\'t Exist...!!");
+                System.out.println("\t\t\t\tPlease enter correct Unique Id...!!\n");
+                System.out.println("\t\t\t\tPlease enter any key to continue.... ");
+                sc.next();
+                clearscreen();
+                continue;
+            }
+            pst=con.prepareStatement("select * from movie where columnid=?");
+            pst.setInt(1,Mid);
+            rs=pst.executeQuery();
+            if(rs.next()){
+                showMyTicket(num);
+                System.out.println("\n\n\t\t\t\tPress \'c\' to cancle ticket...");
+                System.out.print("\t\t\t\t");
+                char t=sc.next().charAt(0);
+                if(t!='c'&& t!='C'){
+                    System.out.println("\n\t\t\t\tTicket is not cancelled....");
+                    System.out.println("\t\t\t\tPlease enter any key to continue.... ");
+                    sc.next();
+                    return;
+                }
+                PreparedStatement pst1=con.prepareStatement("update movie set seat=? where columnid=?");
+                pst1.setInt(1,seat+rs.getInt("seat"));
+                pst1.setInt(2,Mid);
+                if(pst1.executeUpdate()<=0){
+                    System.out.println("\t\t\t\tException occured.........");
+                }
+            }
+            pst=con.prepareStatement("delete from customer where Cid=?");
+            pst.setInt(1,num);
+            if(pst.executeUpdate()>0){
+                System.out.println("\t\t\t\t-------------------------------");
+                System.out.println("\t\t\t\tThe ticket is cancelled.......!!");
+                return;
+            }
+            else{
+                System.out.println("\t\t\t\t-------------------------------");
+                System.out.println("\t\t\t\tThe Unique Id doesn\'t Exist...!!");
+                System.out.println("\t\t\t\tPlese enter correct Unique Id...!!\n");
+                System.out.println("\t\t\t\tPlease enter any key to continue.... ");
+                sc.next();
+                clearscreen();
+            }
+        }
+    }
+    catch(Exception e){
+        System.out.println("\t\t\t\t----------------------------");
+        System.out.println("\t\t\t\tSome Error occured.....!!!!!!\n\n");
+    }
+}
+
+
     
     
     
