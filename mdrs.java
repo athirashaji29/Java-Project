@@ -447,6 +447,122 @@ public static void DeleteMovie(){
         new ProcessBuilder("cmd","/c","cls").inheritIO().start().waitFor();
     }
 
+    public static void process(){
+        try{
+        int ch;
+        final String RESET = "\033[0m";
+        final String RED = "\033[0;31m";
+        final String GREEN = "\033[0;32m";
+        final String YELLOW = "\033[0;33m";
+        final String BLUE = "\033[0;34m";
+        final String MAGENTA = "\033[0;35m";
+        final String CYAN = "\033[0;36m";
+
+        System.out.print("\n\n\n\n\n");
+        System.out.println("\t\t\t\t" + CYAN + "------------------------------------------" + RESET);
+        System.out.println("\t\t\t\t" + BLUE + "--WELCOME TO MOVIE TICKET BOOKING SYSTEM--" + RESET);
+        System.out.println("\t\t\t\t" + CYAN + "------------------------------------------" + RESET);
+        System.out.println("\t\t\t\t" + GREEN + "1. Customer Panel" + RESET);
+        System.out.println("\t\t\t\t" + YELLOW + "2. Owner Panel" + RESET);
+        System.out.println("\t\t\t\t" + RED + "0. Exit" + RESET);
+        System.out.println("\t\t\t\t" + CYAN + "------------------------------------------" + RESET);
+        System.out.println("\t\t\t\tEnter your Choice...:");
+        System.out.print("\t\t\t\t");
+        ch = sc.nextInt();
+        switch(ch)
+                {
+                    case 1:
+                        int ch1;
+                        do
+                        {
+                            clearscreen();
+                            System.out.print("\n\n\n\n");
+                            System.out.println("\t\t\t\t------------------------------------------");
+                            System.out.println("\t\t\t\t--WELCOME TO MOVIE TICKET BOOKING SYSTEM--");
+                            System.out.println("\t\t\t\t------------------------------------------");
+                            System.out.println("\t\t\t\tMENU....");
+                            System.out.println("\t\t\t\t1. Book Ticket");
+                            System.out.println("\t\t\t\t2. Show my Ticket");
+                            System.out.println("\t\t\t\t3. Cancel Ticket");
+                            System.out.println("\t\t\t\t4. Check Seat");
+                            System.out.println("\t\t\t\t5. Show Movie List");
+                            System.out.println("\t\t\t\t6. Back");
+                            System.out.println("\t\t\t\t0. Exit");
+                            System.out.println("\t\t\t\t------------------------------------------");
+                            System.out.println("\t\t\t\tEnter your Choice...:");
+                            System.out.print("\t\t\t\t");
+                            ch1=sc.nextInt();
+                            switch(ch1)
+                            {
+                                case 1:
+                                    clearscreen();
+                                    BookTicket();
+                                    break;
+                                case 2:
+                                    clearscreen();
+                                    char c='x';
+                                    while(c=='x')
+                                    {
+                                        System.out.print("\n\n\n\n\t\t\tDo you have your unique ID(enter \'Y\' for yes or \'N' for No: ");
+                                        c=sc.next().charAt(0);
+                                        if(c=='Y'||c=='y')
+                                         {
+                                            System.out.print("\t\t\t\tEnter unique Id: ");
+                                            int num=sc.nextInt();
+                                            showMyTicket(num);
+                                        }
+                                         else if(c=='N'||c=='n')
+                                        {
+                                            System.out.println("\t\t\t\tEnter your name: ");
+                                            sc.nextLine();
+                                             System.out.print("\t\t\t\t");
+                                            String str=sc.nextLine();
+                                            PreparedStatement pst=con.prepareStatement("select * from customer where name=? ");
+                                             pst.setString(1,str);
+                                            ResultSet rs=pst.executeQuery();
+                                            if(rs.next())
+                                            {
+                                                int num=rs.getInt(10);
+                                                showMyTicket(num);
+                                            }
+                                            else
+                                            {
+                                                System.out.println("\t\t\t\t-------------------------------");
+                                                System.out.println("\t\t\t\tNo Booking available.....!!!!!!\n\n");
+                                            }
+                                        }
+                                        else
+                                        {
+                                            c='x';
+                                            clearscreen();
+                                        }
+                                    }
+                                    break;
+                                case 3:
+                                    clearscreen();
+                                    CancleTicket();
+                                    break;
+                                case 4:
+                                    clearscreen();
+                                    CheckSeat();
+                                    break;
+                                case 5:
+                                    clearscreen();
+                                    int num=ShowMovieList();
+                                    if(num==0)
+                                    {
+                                        System.out.print("\n\n\n\n");
+                                        System.out.println("\t\t\t\t--------------------");
+                                        System.out.println("\t\t\t\tList is EMPTY....!!!");
+                                        System.out.println("\t\t\t\t--------------------");
+                                    }
+                                    break;
+                                case 6:
+                                    break;
+                                case 0:
+                                   break;
+                                default:
+
     
     
     
