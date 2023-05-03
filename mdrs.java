@@ -42,6 +42,119 @@ class MTBS{
             return false;
         }
     }
+
+    public static void BookTicket() throws SQLException{
+      try{
+          int num=ShowMovieList();
+          int Id;
+          System.out.println("\n\n\n\n");
+          if(num==0){
+              System.out.println("\t\t\t\t--------------------------------------");
+              System.out.println("\t\t\t\tSorry...!!!");
+              System.out.println("\n\t\t\t\tThere is no show going on.....!!!!!!");
+              System.out.println("\t\t\t\t--------------------------------------");
+              return;
+          }
+          while(true){
+              System.out.println("\t\t\t\tEnter movie Id(0 to Exit):");
+              System.out.print("\t\t\t\t");
+              Id=sc.nextInt();
+              if(Id==0){
+                  return;
+              }
+              PreparedStatement pst=con.prepareStatement("SELECT * FROM movie WHERE columnid=?");
+              pst.setInt(1,Id);
+              ResultSet rs=pst.executeQuery();
+              if(rs.next()){
+                  System.out.println("\t\t\t\tEnter Customer Name: ");
+                  sc.nextLine();
+                  System.out.print("\t\t\t\t");
+                  String Cname=sc.nextLine();
+                  System.out.println("\t\t\t\tEnter seats: ");
+                  System.out.print("\t\t\t\t");
+                  int seat=sc.nextInt();
+                  int RemainingSeats;
+                  java.util.Date d;
+                  java.util.Date t;
+                  double price;
+                  String Mname,format;
+                  Mname=rs.getString(2);
+                  format=rs.getString(3);
+                  d=rs.getDate(4);
+                  java.sql.Date date=new java.sql.Date(d.getYear(),d.getMonth(),d.getDate());
+                  t=rs.getTime(5);
+                  java.sql.Time time=new Time(t.getHours(),t.getMinutes(),0);
+                  price=rs.getDouble(6);
+                  RemainingSeats=rs.getInt(7)-seat;
+                  if(RemainingSeats<0){
+                      System.out.println("\t\t\t\t---------------------------");
+                      System.out.println("\t\t\t\tInsufficient seats....!!!");
+                      System.out.println("\t\t\t\tBooking is cancelled...!!!!");
+                      System.out.println("\t\t\t\t---------------------------");
+                      return;
+                  }
+                  PreparedStatement pst1=con.prepareStatement("INSERT INTO customer (columnid,Mname,format,date,time,price,seat,Cid,user_id) SELECT ?,?,?,?,?,?,?,?,user_id FROM user WHERE name = ?",Statement.RETURN_GENERATED_KEYS);
+                  pst1.setInt(1,Id);
+                  pst1.setString(2,Mname);
+                  pst1.setString(3,format);
+                  pst1.setDate(4,date);
+                  pst1.setTime(5,time);
+                  pst1.setDouble(6,price*seat);
+                  pst1.setInt(7,seat);
+                  pst1.setInt(8,Cid);
+                  pst1.setString(9,Cname);
+                  if(pst1.executeUpdate()>0){
+                      System.out.println("\t\t\t\t-------------------");
+                      System.out.println("\t\t\t\tTicket Booked...!!!");
+                      System.out.println("\t\t\t\t-------------------");
+                      
+                  }
+                  else{
+                      System.out.println("\t\t\t\t------------------------------");
+                      System.out.println("\t\t\t\tSomething got Wrong.....!!!!!!");
+                      System.out.println("\t\t\t\t------------------------------");
+                      return;
+                  }
+
+ 
+                  pst1=con.prepareStatement("update movie set seat=? where columnId=?");
+                  pst1.setInt(1,RemainingSeats);
+                  pst1.setInt(2,Id);
+                  if(pst1.executeUpdate()<=0){
+                      System.out.println("\t\t\t\t-------------------------------");
+                      System.out.println("\t\t\t\tSomething went Wrong.....!!!!!!");
+                      System.out.println("\t\t\t\t-------------------------------");
+                      return;
+                  }
+                  System.out.print("\t\t\t\tPress any key.....");
+                  sc.next();
+                  pst1=con.prepareStatement("select * from customer where name=? ");
+                  pst1.setString(1,Cname);
+                  ResultSet rs1=pst1.executeQuery();
+                  if(rs1.next()){
+                  clearscreen();
+                  showMyTicket(rs1.getInt(10));
+                  }
+                  else{
+                      System.out.println("\t\t\t\t-------------------------------");
+                      System.out.println("\t\t\t\tSomething went Wrong.....!!!!!!");
+                      System.out.println("\t\t\t\t-------------------------------");
+                  }
+                  return;
+              }
+              else{
+                  System.out.println("\t\t\t\t---------------------------");
+                  System.out.println("\t\t\t\tPlease Input a valid Id....");
+                  System.out.println("\t\t\t\t---------------------------");
+              }
+
+          }
+      }
+      catch(Exception e){
+          System.out.println("\t\t\t\tException occured");
+      }
+  }
+
     
     
     
