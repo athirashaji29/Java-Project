@@ -273,6 +273,76 @@ public static void CancleTicket() throws SQLException{
 }
 
 
+public static void CheckSeat() throws SQLException{
+    try{
+        PreparedStatement pst=con.prepareStatement("Select * from movie");
+        ResultSet rs=pst.executeQuery();
+        System.out.print("\n\n\n\n");
+        System.out.println("\t\t\t\t\t--CHECK SEATS--");
+        System.out.println("\t\t\t\t-------------------------");
+        System.out.println("\t\t\t\t| MOVIE NAME\t| SEATS\t|");
+        System.out.println("\t\t\t\t-------------------------");
+        while(rs.next()){
+            System.out.println("\t\t\t\t| "+rs.getString(2)+"\t| "+rs.getInt(7)+"\t|");
+        } 
+        System.out.println("\t\t\t\t-------------------------\n\n");
+    }
+    catch(Exception e){
+        System.out.println("\t\t\t\t----------------------------");
+        System.out.println("\t\t\t\tSome Error occured.....!!!!!!\n\n");
+    }
+}
+
+
+public static void AddNewMovie() throws SQLException{
+    try{
+        System.out.print("\n\n\n\n");
+        System.out.println("\t\t\t\tEnter Movie name: ");
+        sc.nextLine();
+        System.out.print("\t\t\t\t");
+        String name=sc.nextLine();
+        System.out.println("\t\t\t\tFormat: ");
+        System.out.print("\t\t\t\t");
+        String format=sc.nextLine();
+        System.out.println("\t\t\t\tDate(YYYY/MM/DD): ");
+        System.out.print("\t\t\t\t");
+        String date=sc.nextLine();
+        System.out.println("\t\t\t\tTime(HH:MM:SS): ");
+        System.out.print("\t\t\t\t");
+        String time=sc.nextLine();
+        System.out.println("\t\t\t\tPrice: ");
+        System.out.print("\t\t\t\t");
+        Double price=sc.nextDouble();
+        System.out.println("\t\t\t\tSeats: ");
+        System.out.print("\t\t\t\t");
+        int seat=sc.nextInt();
+        DateFormat df=new SimpleDateFormat("HH:MM:SS");
+        java.util.Date t=df.parse(time);
+        java.util.Date d=new java.util.Date(date);
+        java.sql.Date d1=new java.sql.Date(d.getYear(),d.getMonth(),d.getDate());
+        java.sql.Time t1=new java.sql.Time(t.getHours(),t.getMinutes(),t.getSeconds());
+        PreparedStatement pst=con.prepareStatement("insert into movie (name,format,showdate,showtime,price,seat) values (?,?,?,?,?,?)",Statement.RETURN_GENERATED_KEYS);
+        pst.setString(1,name);
+        pst.setString(2,format);
+        pst.setDate(3,d1);
+        pst.setTime(4,t1);
+        pst.setDouble(5,price);
+        pst.setInt(6,seat);
+        if(pst.executeUpdate()>0){
+            System.out.println("\t\t\t\t---------------------------------");
+            System.out.println("\t\t\t\tMovie Added Successfully........");
+        }
+        else{
+            System.out.println("\t\t\t\t-----------------------------");
+            System.out.println("\t\t\t\tMovie is NOT added........!!!");
+        }
+    }
+    catch(Exception e){
+        System.out.println("\t\t\t\tException occured.....\n\n");
+    }
+}
+
+
     
     
     
