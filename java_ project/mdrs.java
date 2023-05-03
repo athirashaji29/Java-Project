@@ -449,18 +449,19 @@ public static void DeleteMovie(){
     public static void process(){
         try{
         int ch;
-            
-                //clearscreen();
-                System.out.print("\n\n\n\n\n");
-                System.out.println("\t\t\t\t------------------------------------------");
-                System.out.println("\t\t\t\t--WELCOME TO MOVIE TICKET BOOKING SYSTEM--");
-                System.out.println("\t\t\t\t------------------------------------------");
-                System.out.println("\t\t\t\t1. Customer Panal");
-                System.out.println("\t\t\t\t2. Owner Panal");
-                System.out.println("\t\t\t\t0. Exit");
-                System.out.println("\t\t\t\t------------------------------------------");
-                System.out.println("\t\t\t\tEnter your Choice...:");
+
+                System.out.print("\033[H\033[2J"); // clear screen
+                System.out.flush();
+                System.out.println("\033[33m\t\t\t\t------------------------------------------\033[0m");
+                System.out.println("\033[33m\t\t\t\t--WELCOME TO MOVIE TICKET BOOKING SYSTEM--\033[0m");
+                System.out.println("\033[33m\t\t\t\t------------------------------------------\033[0m");
+                System.out.println("\033[32m\t\t\t\t1. Customer Panel\033[0m");
+                System.out.println("\033[32m\t\t\t\t2. Owner Panel\033[0m");
+                System.out.println("\033[31m\t\t\t\t0. Exit\033[0m");
+                System.out.println("\033[33m\t\t\t\t------------------------------------------\033[0m");
+                System.out.print("\033[32m\t\t\t\tEnter your Choice...:\033[0m");
                 System.out.print("\t\t\t\t");
+
                 ch=sc.nextInt();
                 switch(ch)
                 {
@@ -727,8 +728,10 @@ public static void DeleteMovie(){
         int num=0;
        do{ 
         
- System.out.println("\t\t\t\t1. Login");
-System.out.println("\t\t\t\t2. Signup");
+
+System.out.println("\033[32m\t\t\t\t1. Login\033[0m");
+System.out.println("\033[32m\t\t\t\t2. Signup\033[0m");
+
 System.out.println("\t\t\t\t------------------------------------------");
 System.out.println("\t\t\t\tEnter your Choice...:");
 System.out.print("\t\t\t\t");
