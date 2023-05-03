@@ -418,7 +418,30 @@ public static void DeleteMovie(){
         return num;
     }
 
-    
+    public static int SeeTotalBookings() throws SQLException{
+        int num=0;
+        try{
+            num=ShowMovieList();
+            PreparedStatement pst=con.prepareStatement("select * from customer");
+            ResultSet rs=pst.executeQuery();
+            num=0;
+            System.out.println("\n");
+            System.out.println("  \t\t\t\t\t\tDETAILS OF ALL BOOKINGS");
+            System.out.println("  \t\t-----------------------------------------------------------------------------------------");
+            System.out.println("  \t\t| SNO.\t| ID\t|\tNAME\t| Movie ID\t| SEAT(s)\t|");
+            System.out.println("  \t\t-----------------------------------------------------------------------------------------");
+            int i=1;
+            while(rs.next()){
+                System.out.println(" \t\t| "+i+"\t|"+rs.getInt(10)+"\t| "+rs.getString(1)+"\t|\t"+rs.getString(2)+"\t|\t"+rs.getInt(3)+"\t|\t"+rs.getInt(9)+"\t|");
+                System.out.println("  \t\t-----------------------------------------------------------------------------------------");
+                num++;
+            }
+        }
+        catch(Exception e){
+            System.out.println("\t\t\t\tException occured.....\n\n");
+        }
+        return num;
+    }
     
     
     
