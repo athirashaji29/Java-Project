@@ -446,7 +446,281 @@ public static void DeleteMovie(){
     public static void clearscreen() throws InterruptedException,IOException,SQLException{
         new ProcessBuilder("cmd","/c","cls").inheritIO().start().waitFor();
     }
-    
+    public static void process(){
+        try{
+        int ch;
+            
+                //clearscreen();
+                System.out.print("\n\n\n\n\n");
+                System.out.println("\t\t\t\t------------------------------------------");
+                System.out.println("\t\t\t\t--WELCOME TO MOVIE TICKET BOOKING SYSTEM--");
+                System.out.println("\t\t\t\t------------------------------------------");
+                System.out.println("\t\t\t\t1. Customer Panal");
+                System.out.println("\t\t\t\t2. Owner Panal");
+                System.out.println("\t\t\t\t0. Exit");
+                System.out.println("\t\t\t\t------------------------------------------");
+                System.out.println("\t\t\t\tEnter your Choice...:");
+                System.out.print("\t\t\t\t");
+                ch=sc.nextInt();
+                switch(ch)
+                {
+                    case 1:
+                        int ch1;
+                        do
+                        {
+                            clearscreen();
+                            System.out.print("\n\n\n\n");
+                            System.out.println("\t\t\t\t------------------------------------------");
+                            System.out.println("\t\t\t\t--WELCOME TO MOVIE TICKET BOOKING SYSTEM--");
+                            System.out.println("\t\t\t\t------------------------------------------");
+                            System.out.println("\t\t\t\tMENU....");
+                            System.out.println("\t\t\t\t1. Book Ticket");
+                            System.out.println("\t\t\t\t2. Show my Ticket");
+                            System.out.println("\t\t\t\t3. Cancel Ticket");
+                            System.out.println("\t\t\t\t4. Check Seat");
+                            System.out.println("\t\t\t\t5. Show Movie List");
+                            System.out.println("\t\t\t\t6. Back");
+                            System.out.println("\t\t\t\t0. Exit");
+                            System.out.println("\t\t\t\t------------------------------------------");
+                            System.out.println("\t\t\t\tEnter your Choice...:");
+                            System.out.print("\t\t\t\t");
+                            ch1=sc.nextInt();
+                            switch(ch1)
+                            {
+                                case 1:
+                                    clearscreen();
+                                    BookTicket();
+                                    break;
+                                case 2:
+                                    clearscreen();
+                                    char c='x';
+                                    while(c=='x')
+                                    {
+                                        System.out.print("\n\n\n\n\t\t\tDo you have your unique ID(enter \'Y\' for yes or \'N' for No: ");
+                                        c=sc.next().charAt(0);
+                                        if(c=='Y'||c=='y')
+                                         {
+                                            System.out.print("\t\t\t\tEnter unique Id: ");
+                                            int num=sc.nextInt();
+                                            showMyTicket(num);
+                                        }
+                                         else if(c=='N'||c=='n')
+                                        {
+                                            System.out.println("\t\t\t\tEnter your name: ");
+                                            sc.nextLine();
+                                             System.out.print("\t\t\t\t");
+                                            String str=sc.nextLine();
+                                            PreparedStatement pst=con.prepareStatement("select * from customer where name=? ");
+                                             pst.setString(1,str);
+                                            ResultSet rs=pst.executeQuery();
+                                            if(rs.next())
+                                            {
+                                                int num=rs.getInt(10);
+                                                showMyTicket(num);
+                                            }
+                                            else
+                                            {
+                                                System.out.println("\t\t\t\t-------------------------------");
+                                                System.out.println("\t\t\t\tNo Booking available.....!!!!!!\n\n");
+                                            }
+                                        }
+                                        else
+                                        {
+                                            c='x';
+                                            clearscreen();
+                                        }
+                                    }
+                                    break;
+                                case 3:
+                                    clearscreen();
+                                    CancleTicket();
+                                    break;
+                                case 4:
+                                    clearscreen();
+                                    CheckSeat();
+                                    break;
+                                case 5:
+                                    clearscreen();
+                                    int num=ShowMovieList();
+                                    if(num==0)
+                                    {
+                                        System.out.print("\n\n\n\n");
+                                        System.out.println("\t\t\t\t--------------------");
+                                        System.out.println("\t\t\t\tList is EMPTY....!!!");
+                                        System.out.println("\t\t\t\t--------------------");
+                                    }
+                                    break;
+                                case 6:
+                                    break;
+                                case 0:
+                                   break;
+                                default:
+                                    clearscreen();
+                                    System.out.println("\n\n\n\n\t\t\t\t------------------------");
+                                    System.out.println("\t\t\t\tEnter a VALID CHOICE....");
+                                    System.out.println("\t\t\t\t------------------------");
+                                    System.out.print("\t\t\t\tEnter any key....");
+                                    sc.next();
+                                    ch1=9;
+                            }
+                            if(ch1!=0 && ch1!=9 && ch1!=6){
+                                System.out.println("\t\t\t\t--------------------");
+                                System.out.println("\t\t\t\tPress any key to back to main menu");
+                                System.out.println("\t\t\t\t0. Exit");
+                                System.out.println("\t\t\t\t--------------------");
+                                System.out.println("\t\t\t\tEnter your Choice...:");
+                                System.out.print("\t\t\t\t");
+                                char c1=sc.next().charAt(0);
+                                if(c1!='0')
+                                    ch1=9;
+                                else
+                                    ch1=0;
+                            }
+                            if(ch1==0){
+                                clearscreen();
+                                System.out.print("\n\n\n\n\n\n");
+                                System.out.println("\t\t\t\t\t--------------------------------------------");
+                                System.out.println("\t\t\t\t\t\tTHANK YOU FOR USING MTBS....!!!!");
+                                System.out.println("\t\t\t\t\t\tDEVELOPED BY:--");
+                                System.out.println("\t\t\t\t\t\tANAMIKA");
+                                System.out.println("\t\t\t\t\t--------------------------------------------\n\n\n"); 
+                                return;
+                            }
+                            if(ch1==6){
+                                ch=9;
+                                break;
+                            }
+                            
+                        }while(ch1==9);
+                        break;
+                    case 2:
+                        clearscreen();
+                        if(login()){
+                            int ch2;
+                            do{
+                                clearscreen();
+                                System.out.print("\n\n\n\n");
+                                System.out.println("\t\t\t\t------------------------------------------");
+                                System.out.println("\t\t\t\t\t-------OWNER PANAL------");
+                                System.out.println("\t\t\t\t------------------------------------------");
+                                System.out.println("\t\t\t\t1. Add New Movie");
+                                System.out.println("\t\t\t\t2. Delete Movie");
+                                System.out.println("\t\t\t\t3. Show Movie List");
+                                System.out.println("\t\t\t\t4. See Total Bookings");
+                                System.out.println("\t\t\t\t5. Back");
+                                System.out.println("\t\t\t\t0. Exit");
+                                System.out.println("\t\t\t\t------------------------------------------");
+                                System.out.println("\t\t\t\tEnter your Choice...:");
+                                System.out.print("\t\t\t\t");
+                                ch2=sc.nextInt();
+                                switch(ch2){
+                                    case 1:
+                                        clearscreen();
+                                        AddNewMovie();
+                                        break;
+                                    case 2:
+                                        clearscreen();
+                                        DeleteMovie();
+                                        break;
+                                    case 3:
+                                        clearscreen();
+                                        int num=ShowMovieList();
+                                        if(num==0)
+                                        {
+                                            System.out.print("\n\n\n\n");
+                                            System.out.println("\t\t\t\t--------------------");
+                                            System.out.println("\t\t\t\tList is EMPTY....!!!");
+                                            System.out.println("\t\t\t\t--------------------");
+                                        }
+                                        break;
+                                    case 4:
+                                        clearscreen();
+                                        num=SeeTotalBookings();
+                                        if(num==0){
+                                            System.out.print("\n\n\n\n");
+                                            System.out.println("\t\t\t\t---------------------------");
+                                            System.out.println("\t\t\t\tNo booking Available....!!!");
+                                            System.out.println("\t\t\t\t---------------------------");
+                                        }
+                                        break;
+                                    case 5:
+                                        break;
+                                    case 0:
+                                        break;
+                                    default:
+                                        clearscreen();
+                                        System.out.println("\n\n\n\n\t\t\t\t------------------------");
+                                        System.out.println("\t\t\t\tEnter a VALID CHOICE....");
+                                        System.out.println("\t\t\t\t------------------------");
+                                        System.out.print("\t\t\t\tEnter any key....");
+                                        sc.next();
+                                        ch2=9;
+                                }
+                                if(ch2!=0 && ch2!=9 && ch2!=5){
+                                    System.out.println("\t\t\t\t--------------------");
+                                    System.out.println("\t\t\t\tPress any key Back to main menu");
+                                    System.out.println("\t\t\t\t0. Exit");
+                                    System.out.println("\t\t\t\t--------------------");
+                                    System.out.println("\t\t\t\tEnter your Choice...:");
+                                    System.out.print("\t\t\t\t");
+                                    char c2=sc.next().charAt(0);
+                                    if(c2!='0')
+                                        ch2=9;
+                                    else
+                                        ch2=0;
+                                }
+                                if(ch2==0){
+                                    clearscreen();
+                                    System.out.print("\n\n\n\n\n\n");
+                                    System.out.println("\t\t\t\t\t--------------------------------------------");
+                                    System.out.println("\t\t\t\t\t\tTHANK YOU FOR USING MTBS....!!!!");
+                                    System.out.println("\t\t\t\t\t\tDEVELOPED BY:--");
+                                    System.out.println("\t\t\t\t\t\tANAMIKA");
+                                    System.out.println("\t\t\t\t\t--------------------------------------------\n\n\n"); 
+                                    return;
+                                }
+                                if(ch2==5){
+                                    ch=9;
+                                    break;
+                                }
+                            }while(ch2==9);
+                        }
+                        else{
+                            clearscreen();
+                            System.out.println("\n\n\n\n\n\t\t\t\t-----------------------------------------------------");
+                            System.out.println("\t\t\t\t YOU ARE NOT AUTHORISED TO ACCESS THIS PAGE....");
+                            System.out.println("\t\t\t\t-----------------------------------------------------");
+                            System.out.println("\n\n\t\t\t\tPress any key to go back.....");
+                            System.out.print("\t\t\t\t");
+                            sc.next();
+                            ch=9;
+                        }
+                        break;
+                    case 0:
+                        clearscreen();
+                        System.out.print("\n\n\n\n\n\n");
+                        System.out.println("\t\t\t\t\t--------------------------------------------");
+                        System.out.println("\t\t\t\t\t\tTHANK YOU FOR USING MTBS....!!!!");
+                        System.out.println("\t\t\t\t\t\tDEVELOPED BY:--");
+                        System.out.println("\t\t\t\t\t\tANAMIKA");
+                        System.out.println("\t\t\t\t\t--------------------------------------------\n\n\n"); 
+                        return;
+                    default:
+                        clearscreen();
+                        System.out.println("\n\n\n\n\t\t\t\t------------------------");
+                        System.out.println("\t\t\t\tEnter a VALID CHOICE....");
+                        System.out.println("\t\t\t\t------------------------");
+                        System.out.print("\t\t\t\tEnter any key....");
+                        sc.next();
+                        ch=9;
+                }
+            }
+         catch(Exception e){
+             if(!e.getMessage().equals(null)){
+                System.out.print("Exception Occured");
+            }
+         }
+        }
     // athira added first
     public static void main(String[] arg) throws SQLException{
         int ch;
