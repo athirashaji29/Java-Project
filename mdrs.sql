@@ -33,4 +33,3 @@ CREATE TABLE `customer` (
     -> ) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=latin1;
 
 INSERT INTO `customer` VALUES (5,'RRR','Tamil 3D','2022-04-10','21:00:00',1000.00,4,19,1),(5,'RRR','Tamil 3D','2022-04-10','21:00:00',500.00,2,20,2),(3,'Vikram',' Tamil 2D','2022-04-10','12:00:00',1500.00,5,21,3),(3,'Vikram','Tamil 2D','2022-04-20','12:00:00',3600.00,12,23,4),(5,'RRR','Tamil 3D','2022-05-10','21:00:00',500.00,2,24,6),(3,'Vikram','Tamil 2D','2022-10-10','12:00:00',600.00,2,26,7);
-Query OK, 6 rows affected (0.00 sec)
