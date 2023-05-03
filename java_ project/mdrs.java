@@ -163,8 +163,6 @@ public static void showMyTicket(int num) throws SQLException{
             System.out.println("\n\n\n\t\t\t\t\t---MOVIE TICKET--");
             String name=rs.getString(8);
                 System.out.println("\t\t\t---------------------------------------------------------");
-                //System.out.println("\t\t\t\tName-\t\t\t"+rs.getString(1));
-               // System.out.println("\t\t\t\tPhone No.-\t\t"+rs.getString(2));
                 System.out.println("\t\t\t---------------------------------------------------------");
                 System.out.println("\t\t\t\tMovie Name-\t\t"+rs.getString(2));
                 System.out.println("\t\t\t\tType-\t\t\t"+rs.getString(3));
