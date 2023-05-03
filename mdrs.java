@@ -154,6 +154,53 @@ class MTBS{
           System.out.println("\t\t\t\tException occured");
       }
   }
+public static void showMyTicket(int num) throws SQLException{
+    try{
+        PreparedStatement pst=con.prepareStatement("select * from customer where Cid=?");
+        pst.setInt(1,num);
+        ResultSet rs=pst.executeQuery();
+        if(rs.next()){
+            System.out.println("\n\n\n\t\t\t\t\t---MOVIE TICKET--");
+            String name=rs.getString(8);
+                System.out.println("\t\t\t---------------------------------------------------------");
+                //System.out.println("\t\t\t\tName-\t\t\t"+rs.getString(1));
+               // System.out.println("\t\t\t\tPhone No.-\t\t"+rs.getString(2));
+                System.out.println("\t\t\t---------------------------------------------------------");
+                System.out.println("\t\t\t\tMovie Name-\t\t"+rs.getString(2));
+                System.out.println("\t\t\t\tType-\t\t\t"+rs.getString(3));
+                System.out.println("\t\t\t\tdate-\t\t\t"+rs.getDate(4));
+                System.out.println("\t\t\t\tTime-\t\t\t"+rs.getString(5));
+                System.out.println("\t\t\t\tSeat(s)-\t\t"+rs.getInt(7));
+                System.out.println("\t\t\t\tPrice-\t\t\t"+rs.getDouble(6));
+                System.out.println("\t\t\t\tUnique Id-\t\t"+rs.getInt(8));
+                System.out.println("\t\t\t---------------------------------------------------------");
+                System.out.println("\n\n");
+                String filename=name+".txt";
+            File file = new File (filename);
+            FileWriter writer = new FileWriter(file,true);
+            writer.write("\n\n\n\t\t\t\t\t---MOVIE TICKET--\n");
+            writer.write("\t\t\t---------------------------------------------------------\n");
+            writer.write("\t\t\t\tMovie Name-\t\t"+rs.getString(2) + "\n");
+            writer.write("\t\t\t\tType-\t\t\t"+rs.getString(3) + "\n");
+            writer.write("\t\t\t\tdate-\t\t\t"+rs.getDate(4) + "\n");
+            writer.write("\t\t\t\tTime-\t\t\t"+rs.getString(5) + "\n");
+            writer.write("\t\t\t\tSeat(s)-\t\t"+rs.getInt(7) + "\n");
+            writer.write("\t\t\t\tPrice-\t\t\t"+rs.getDouble(6) + "\n");
+            writer.write("\t\t\t\tUnique Id-\t\t"+rs.getInt(8) + "\n");
+            writer.write("\t\t\t---------------------------------------------------------\n");
+            writer.write("\n\n");
+            writer.close();
+        }
+        else{
+            System.out.println("\t\t\t\t-------------------------------");
+            System.out.println("\t\t\t\tNo Booking available.....!!!!!!");
+        }
+        
+    }
+    catch(Exception e){
+        System.out.println("\t\t\t\tException occurred in showing ticket");
+    }
+}
 
     
     
