@@ -25,7 +25,7 @@ class MTBS{
         
     }
 
-    public static boolean login() throws SQLException{
+    public static boolean login() throws SQLException{ //login function
         System.out.println("\n\n\n\n\t\t\t\t-----------------------------");
         System.out.println("\t\t\t\tLOGIN TO MOVIE TICKET BOOKING");
         System.out.println("\t\t\t\t-----------------------------\n\n");
@@ -43,7 +43,7 @@ class MTBS{
         }
     }
 
-    public static void BookTicket() throws SQLException{
+    public static void BookTicket() throws SQLException{    //to book tickets
       try{
           int num=ShowMovieList();
           int Id;
@@ -154,7 +154,7 @@ class MTBS{
           System.out.println("\t\t\t\tException occured");
       }
   }
-public static void showMyTicket(int num) throws SQLException{
+public static void showMyTicket(int num) throws SQLException{ //to view the ticket generated
     try{
         PreparedStatement pst=con.prepareStatement("select * from customer where Cid=?");
         pst.setInt(1,num);
@@ -174,7 +174,7 @@ public static void showMyTicket(int num) throws SQLException{
                 System.out.println("\t\t\t---------------------------------------------------------");
                 System.out.println("\n\n");
                 String filename=name+".txt";
-            File file = new File (filename);
+            File file = new File (filename);  //file generating
             FileWriter writer = new FileWriter(file,true);
             writer.write("\n\n\n\t\t\t\t\t---MOVIE TICKET--\n");
             writer.write("\t\t\t---------------------------------------------------------\n");
@@ -200,7 +200,7 @@ public static void showMyTicket(int num) throws SQLException{
     }
 }
 
-public static void CancleTicket() throws SQLException{
+public static void CancleTicket() throws SQLException{ //to cancel tickets that has been booked
     try{
         while(true){
             System.out.print("\n\n\n\n");
@@ -271,7 +271,7 @@ public static void CancleTicket() throws SQLException{
 }
 
 
-public static void CheckSeat() throws SQLException{
+public static void CheckSeat() throws SQLException{  //to check whether seats are available or not
     try{
         PreparedStatement pst=con.prepareStatement("Select * from movie");
         ResultSet rs=pst.executeQuery();
@@ -292,7 +292,7 @@ public static void CheckSeat() throws SQLException{
 }
 
 
-public static void AddNewMovie() throws SQLException{
+public static void AddNewMovie() throws SQLException{ //to add movie by the owner
     try{
         System.out.print("\n\n\n\n");
         System.out.println("\t\t\t\tEnter Movie name: ");
@@ -470,7 +470,7 @@ public static void DeleteMovie(){
                             clearscreen();
                             System.out.print("\n\n\n\n");
                             System.out.println("\t\t\t\t------------------------------------------");
-                            System.out.print("\033[H\033[2J"); // clear screen
+                            System.out.print("\033[H\033[2J"); // clear screen 
                             System.out.flush();
                             System.out.println("\033[33m\t\t\t\t--WELCOME TO MOVIE TICKET BOOKING SYSTEM--\033[0m");
                             System.out.println("\033[33m\t\t\t\t------------------------------------------\033[0m");
