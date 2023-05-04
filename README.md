@@ -1,11 +1,13 @@
-                                                                    # MovieMaven
-                                                          ## Movie Ticket Reservation System
- Features
+# MovieMaven
+## Movie Ticket Reservation System
+### Features
 A user can login or signup to the page where they can book ticket,see ticket,see information regarding running movies etc...
-Table 'movie':
+
+## DATABASE TABLES 
+### Table 'movie':
 
 The table stores information about movies.
-It has columns for movie name, format, show date, show time, price, and seat count.
+It has columns for column id,movie name, format, show date, show time, price, and seat count where column id is the primary key.
 
 ![Screenshot 2023-05-04 005034](https://user-images.githubusercontent.com/118505120/236133351-bbf131f1-8ad8-4769-9799-7719e7127b61.png)
 
