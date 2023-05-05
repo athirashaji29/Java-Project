@@ -38,6 +38,8 @@ The 'user_id' column in this table is a foreign key that references the 'user_id
 
 ## Code
 ### Implementation of login/signup:
+![Screenshot 2023-05-04 104828](https://user-images.githubusercontent.com/118505694/236427275-6e79e1d7-df43-45e4-981d-ac663f821a8c.png)
+
 It allows a user to either log in with their existing username and password or sign up with a new username and password.
 First, the user is prompted to input their choice of action - login or signup. If the user chooses to log in, the program prompts the user to enter their existing username and password. 
 
@@ -51,6 +53,8 @@ If the login is successful, the program prints a success message and proceeds wi
 ### There are two panals
 #### 1.Customer Panal
 #### 2.Owner Panal
+![jav2](https://user-images.githubusercontent.com/118505694/236423559-b032b134-c7d3-4b71-a9c5-f3957ec2e6ba.png)
+
 
 ##### 1.customer panal
 In the Customer Panal, there is a list of operations a customer can perform-
@@ -62,10 +66,13 @@ In the Customer Panal, there is a list of operations a customer can perform-
 ###### 5.Show Movie List
 ###### 6.Back
 ###### 7.Exit
+![jav 3](https://user-images.githubusercontent.com/118505694/236423885-d383020a-078a-4158-a04a-7d89084a8186.png)
 
 ###### 1. Book Ticket
 The code first calls the "ShowMovieList" method to display the list of available movies and their show timings.
 The user is then prompted to enter the ID of the movie they want to watch. If the user enters 0, the method exits. If the entered ID is valid, the user is prompted to enter their name and the number of seats they want to book. The method then checks if there are enough seats available for the movie and if not, the booking is cancelled.
+![Screenshot 2023-05-04 105611](https://user-images.githubusercontent.com/118505694/236427012-d6513974-63f9-422c-837e-2392d3d0bfac.png)
+
 
 If there are enough seats available, the method inserts a new record into the "customer" table in the database with the movie ID, movie name, show format, date, time, price, number of seats, and customer name. It then updates the "seat" field in the "movie" table to reflect the remaining available seats. If the booking and updating are successful, the method displays a success message and shows the user their ticket details.
 
@@ -73,6 +80,8 @@ If any error occurs during the booking process, the method displays an error mes
 
 ###### 2.Show my Ticket
 The code is a Java method that shows a movie ticket for a customer identified by their unique ID number. The method retrieves the ticket information from a SQL database table called "customer" using a prepared statement with the customer ID parameter. If the customer exists, the ticket information is printed to the console and also written to a text file with the customer's name as the file name. The ticket information includes the movie name, type, date, time, seat(s), price, and unique ID. If the customer does not exist in the database, a message is displayed indicating that no booking is available. The method handles any exceptions that might occur during the process.
+![jav7](https://user-images.githubusercontent.com/118505694/236426763-04257a99-5558-48df-9d21-d0496e3b3935.png)
+
 
 ###### 3.Cancel Ticket
 This method cancels a previously booked movie ticket by taking a unique ID as input. It fetches the corresponding seat and movie details from the database, allows the user to confirm the cancellation, updates the movie seat availability, and deletes the ticket information from the customer table.
@@ -82,6 +91,8 @@ This method displays the available seats for all movies in the database. It fetc
 
 ###### 5.Show Movie List
 This function displays a list of all the movies in the database, along with their details like ID, name, format, show date and time, price, and available seats. It returns the number of movies in the list.
+![jav5](https://user-images.githubusercontent.com/118505694/236424285-7a389a38-b704-4079-9515-f5043abbd058.png)
+
 
 ##### 2.Owner Panal
 The Owner Panal has a login page so that it can be accessed only by owner
