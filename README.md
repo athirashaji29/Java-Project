@@ -35,6 +35,20 @@ The 'user_id' column in this table is a foreign key that references the 'user_id
 ![Screenshot 2023-05-04 001010](https://user-images.githubusercontent.com/118505120/236135028-c02c3402-4702-445e-8a90-0979c22379f4.png)
 
 
-![jav 3](https://user-images.githubusercontent.com/118505212/236127021-67d06569-e11b-4538-a9c0-3c22956f511b.png)
-![jav2](https://user-images.githubusercontent.com/118505212/236127498-931519d0-ee5d-45d0-9d9d-a5ed0c601f0e.png)
 
+## Code
+Implementation oflogin/signup:
+It allows a user to either log in with their existing username and password or sign up with a new username and password.
+First, the user is prompted to input their choice of action - login or signup. If the user chooses to log in, the program prompts the user to enter their existing username and password. 
+
+If the login is successful, the program prints a success message and proceeds with the process function. If the login fails, the program prints an error message and resets the num variable to 0 to allow the user to try again.
+
+ If the signup is successful, the program prints a success message and proceeds with the process function. If the signup fails, the program prints an error message and resets the num variable to 0 to allow the user to try again.
+
+
+
+
+There are two panals
+1.Customer Panal
+2.Owner Panal
+jav2.png
