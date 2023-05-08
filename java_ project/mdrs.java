@@ -17,7 +17,7 @@ class MTBS{
     static{
         try{
             Class.forName("com.mysql.jdbc.Driver");
-            con=DriverManager.getConnection("jdbc:mysql://localhost:3306/javaproject","root","123456");
+            con=DriverManager.getConnection("jdbc:mysql://localhost:3306/project","root","Malavika@2001");
         }
         catch(Exception e){
             System.out.println("\n\n\n\n\t\t\t\t"+e.getMessage());
@@ -444,6 +444,29 @@ public static void DeleteMovie(){
     public static void clearscreen() throws InterruptedException,IOException,SQLException{
         new ProcessBuilder("cmd","/c","cls").inheritIO().start().waitFor();
     }
+
+
+    public static void generateMovieBookingReport(Connection con) throws SQLException {
+        String sql = "SELECT Mname, COUNT(*) as booking_count " +
+                     "FROM customer " +
+                     "GROUP BY Mname " +
+                     "ORDER BY booking_count DESC";
+        PreparedStatement stmt = con.prepareStatement(sql);
+        ResultSet rs = stmt.executeQuery();
+    
+        System.out.println("Movie Booking Report:");
+        System.out.println("---------------------");
+    
+        while (rs.next()) {
+            String movieName = rs.getString("Mname");
+            int bookingCount = rs.getInt("booking_count");
+            System.out.println(movieName + ": " + bookingCount + " bookings");
+        }
+    
+        rs.close();
+        stmt.close();
+    }
+
     public static void process(){
         try{
         int ch;
@@ -609,7 +632,9 @@ public static void DeleteMovie(){
                                 System.out.println("\033[31m\t\t\t\t2. Delete Movie\033[0m");
                                 System.out.println("\033[32m\t\t\t\t3. Show Movie List\033[0m");
                                 System.out.println("\033[32m\t\t\t\t4. See Total Bookings\033[0m");
-                                System.out.println("\033[34m\t\t\t\t5. Back\033[0m");
+                                System.out.println("\033[34m\t\t\t\t5. Show Movie Booking Report\033[0m");
+                                System.out.println("\033[34m\t\t\t\t6. Back\033[0m");
+                                
                                 System.out.println("\033[31m\t\t\t\t0. Exit\033[0m");
                                 System.out.println("\033[33m\t\t\t\t------------------------------------------\033[0m");
                                 System.out.print("\033[32m\t\t\t\tEnter your Choice...:\033[0m");
@@ -645,6 +670,9 @@ public static void DeleteMovie(){
                                         }
                                         break;
                                     case 5:
+                                          generateMovieBookingReport(con);
+                                          break;
+                                    case 6:
                                         break;
                                     case 0:
                                         break;
@@ -722,7 +750,7 @@ public static void DeleteMovie(){
             }
          }
         }
-    // athira added first
+    
     public static void main(String[] arg) throws SQLException{
         int ch;
         int num=0;
