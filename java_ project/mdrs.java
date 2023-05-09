@@ -614,10 +614,10 @@ public static void DeleteMovie(){
                                 clearscreen();
                                 System.out.print("\n\n\n\n\n\n");
                                 System.out.println("\t\t\t\t\t--------------------------------------------");
-                                System.out.println("\t\t\t\t\t\tTHANK YOU FOR USING MTBS....!!!!");
-                                System.out.println("\t\t\t\t\t\tDEVELOPED BY:--");
-                                System.out.println("\t\t\t\t\t\tANAMIKA");
-                                System.out.println("\t\t\t\t\t--------------------------------------------\n\n\n"); 
+                                System.out.println("\t\t\t\t\t\t\033[1;33mTHANK YOU FOR USING MTBS....!!!!\033[0m");
+                                System.out.println("\t\t\t\t\t\t\033[1;36mDEVELOPED BY:--\033[0m");
+                                System.out.println("\t\t\t\t\t\t\033[1;35mANAMIKA\033[0m");
+                                System.out.println("\t\t\t\t\t--------------------------------------------\n\n\n");
                                 return;
                             }
                             if(ch1==6){
@@ -712,10 +712,10 @@ public static void DeleteMovie(){
                                     clearscreen();
                                     System.out.print("\n\n\n\n\n\n");
                                     System.out.println("\t\t\t\t\t--------------------------------------------");
-                                    System.out.println("\t\t\t\t\t\tTHANK YOU FOR USING MTBS....!!!!");
-                                    System.out.println("\t\t\t\t\t\tDEVELOPED BY:--");
-                                    System.out.println("\t\t\t\t\t\tANAMIKA");
-                                    System.out.println("\t\t\t\t\t--------------------------------------------\n\n\n"); 
+                                    System.out.println("\t\t\t\t\t\t\033[1;33mTHANK YOU FOR USING MTBS....!!!!\033[0m");
+                                    System.out.println("\t\t\t\t\t\t\033[1;36mDEVELOPED BY:--\033[0m");
+                                    System.out.println("\t\t\t\t\t\t\033[1;35mANAMIKA\033[0m");
+                                    System.out.println("\t\t\t\t\t--------------------------------------------\n\n\n");
                                     return;
                                 }
                                 if(ch2==5){
@@ -739,10 +739,10 @@ public static void DeleteMovie(){
                         clearscreen();
                         System.out.print("\n\n\n\n\n\n");
                         System.out.println("\t\t\t\t\t--------------------------------------------");
-                        System.out.println("\t\t\t\t\t\tTHANK YOU FOR USING MTBS....!!!!");
-                        System.out.println("\t\t\t\t\t\tDEVELOPED BY:--");
-                        System.out.println("\t\t\t\t\t\tANAMIKA");
-                        System.out.println("\t\t\t\t\t--------------------------------------------\n\n\n"); 
+                        System.out.println("\t\t\t\t\t\t\033[1;33mTHANK YOU FOR USING MTBS....!!!!\033[0m");
+                        System.out.println("\t\t\t\t\t\t\033[1;36mDEVELOPED BY:--\033[0m");
+                        System.out.println("\t\t\t\t\t\t\033[1;35mANAMIKA\033[0m");
+                        System.out.println("\t\t\t\t\t--------------------------------------------\n\n\n");
                         return;
                     default:
                         clearscreen();
