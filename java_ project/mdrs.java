@@ -457,24 +457,39 @@ public static void DeleteMovie(){
 
 
     public static void generateMovieBookingReport(Connection con) throws SQLException {
-        String sql = "SELECT Mname, COUNT(*) as booking_count " +
-                     "FROM customer " +
-                     "GROUP BY Mname " +
-                     "ORDER BY booking_count DESC";
-        PreparedStatement stmt = con.prepareStatement(sql);
-        ResultSet rs = stmt.executeQuery();
+    String sql = "SELECT Mname, COUNT(*) as booking_count " +
+                 "FROM customer " +
+                 "GROUP BY Mname " +
+                 "ORDER BY booking_count DESC";
+                 
     
-        System.out.println("Movie Booking Report:");
-        System.out.println("---------------------");
-    
-        while (rs.next()) {
-            String movieName = rs.getString("Mname");
-            int bookingCount = rs.getInt("booking_count");
-            System.out.println(movieName + ": " + bookingCount + " bookings");
-        }
-    
-        rs.close();
-        stmt.close();
+PreparedStatement stmt = con.prepareStatement(sql);
+ResultSet rs = stmt.executeQuery();
+
+System.out.println("Movie Booking Report:");
+System.out.println("---------------------");
+
+int maxBookingCount = 0;
+
+while (rs.next()) {
+    String movieName = rs.getString("Mname");
+    int bookingCount = rs.getInt("booking_count");
+    if (bookingCount > maxBookingCount) {
+        maxBookingCount = bookingCount;
+    }
+    System.out.printf("%-20s | ", movieName);
+    for (int i = 0; i < bookingCount; i++) {
+        System.out.print("  ||||  ");
+    }
+    System.out.println(" ");
+}
+
+rs.close();
+stmt.close();
+
+System.out.println("---------------------");
+
+
     }
 
     public static void process(){
