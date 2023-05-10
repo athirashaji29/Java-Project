@@ -88,8 +88,14 @@ The code is a Java method that shows a movie ticket for a customer identified by
 ###### 3.Cancel Ticket
 This method cancels a previously booked movie ticket by taking a unique ID as input. It fetches the corresponding seat and movie details from the database, allows the user to confirm the cancellation, updates the movie seat availability, and deletes the ticket information from the customer table.
 
+![image](https://github.com/athirashaji29/Java-Project/assets/118505694/63f1598a-f2ee-4ff9-ae7e-884378459701)
+
+
 ###### 4.Check Seat
 This method displays the available seats for all movies in the database. It fetches the movie details from the database and prints them in a tabular format.
+
+![image](https://github.com/athirashaji29/Java-Project/assets/118505694/9f303860-833f-414b-862b-bef2aee4b782)
+
 
 ###### 5.Show Movie List
 This function displays a list of all the movies in the database, along with their details like ID, name, format, show date and time, price, and available seats. It returns the number of movies in the list.
