@@ -117,6 +117,7 @@ After successfully login, there is shown a list of operations that the Owner can
 
 ###### 1.Add New Movie
 This function adds a new movie to the database. It takes input from the owner for movie name, format, show date, show time, price and available seats. It then parses the input and prepares an SQL statement to insert the movie data into the database. If the insertion is successful, it prints a success message, otherwise, it prints a failure message.
+
 ![image](https://github.com/athirashaji29/Java-Project/assets/118505694/4c06ba62-1d39-4077-b21b-6b37280432fe)
 
 
