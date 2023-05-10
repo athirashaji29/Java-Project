@@ -101,16 +101,21 @@ Username - anamika
 Password - password
 
 After successfully login, there is shown a list of operations that the Owner can perform-
+![image](https://github.com/athirashaji29/Java-Project/assets/118505694/bef0082b-bcc9-4e49-b720-6ff41b9396fc)
+
 
 ###### 1.Add New Movie
 ###### 2.Delete Movie
 ###### 3.Show Movie List
 ###### 4.See Total Bookings
-###### 5.Back
-###### 6.Exit
+###### 5.Generate movie booking report 
+###### 6.back
+###### 0.Exit
 
 ###### 1.Add New Movie
 This function adds a new movie to the database. It takes input from the owner for movie name, format, show date, show time, price and available seats. It then parses the input and prepares an SQL statement to insert the movie data into the database. If the insertion is successful, it prints a success message, otherwise, it prints a failure message.
+![image](https://github.com/athirashaji29/Java-Project/assets/118505694/4c06ba62-1d39-4077-b21b-6b37280432fe)
+
 
 ###### 2.Delete Movie
 This function is used to delete a movie from the movie database. It takes the movie ID as input and displays the details of the movie. The user is prompted to confirm the deletion by pressing 'd'. If the user confirms, the movie is deleted from the database, otherwise the function exits. The function uses SQL queries to select and delete the movie. If an error occurs, an exception is caught and an error message is displayed.
@@ -120,4 +125,12 @@ This function retrieves all movies from the database and displays them in a form
 
 ###### 4.See Total Bookings
 This function retrieves and displays all the booking details from the customer table, along with the associated movie details from the movie table. The method also returns the total number of bookings made. The output includes the customer's name, booking ID, number of seats booked, and the movie ID.
+
+###### 5.Generate movie booking report
+This fucntion will display nunber of booking for a perticular movie 
+![Screenshot 2023-05-10 115649](https://github.com/athirashaji29/Java-Project/assets/118505694/4c403359-991d-406a-8d48-e666160ee404)
+
+
+
+
 
