@@ -65,13 +65,15 @@ In the Customer Panal, there is a list of operations a customer can perform-
 ###### 4.Check Seat
 ###### 5.Show Movie List
 ###### 6.Back
-###### 7.Exit
+###### 0.Exit
 ![jav 3](https://user-images.githubusercontent.com/118505694/236423885-d383020a-078a-4158-a04a-7d89084a8186.png)
 
 ###### 1. Book Ticket
 The code first calls the "ShowMovieList" method to display the list of available movies and their show timings.
 The user is then prompted to enter the ID of the movie they want to watch. If the user enters 0, the method exits. If the entered ID is valid, the user is prompted to enter their name and the number of seats they want to book. The method then checks if there are enough seats available for the movie and if not, the booking is cancelled.
-![Screenshot 2023-05-04 105611](https://user-images.githubusercontent.com/118505694/236427012-d6513974-63f9-422c-837e-2392d3d0bfac.png)
+![image](https://github.com/athirashaji29/Java-Project/assets/118505694/bbdc7396-f6c4-4edc-bf79-4bc614ab38ce)
+![image](https://github.com/athirashaji29/Java-Project/assets/118505694/7fad45cc-a8eb-44d8-80bb-961d92fa69c6)
+
 
 
 If there are enough seats available, the method inserts a new record into the "customer" table in the database with the movie ID, movie name, show format, date, time, price, number of seats, and customer name. It then updates the "seat" field in the "movie" table to reflect the remaining available seats. If the booking and updating are successful, the method displays a success message and shows the user their ticket details.
