@@ -93,7 +93,8 @@ This method displays the available seats for all movies in the database. It fetc
 
 ###### 5.Show Movie List
 This function displays a list of all the movies in the database, along with their details like ID, name, format, show date and time, price, and available seats. It returns the number of movies in the list.
-![jav5](https://user-images.githubusercontent.com/118505694/236424285-7a389a38-b704-4079-9515-f5043abbd058.png)
+![image](https://github.com/athirashaji29/Java-Project/assets/118505694/a4f52848-398d-48d2-be2a-fc774e3c324e)
+
 
 
 ##### 2.Owner Panal
